@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  patient-service:
+    build: .
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - DATABASE_URL=sqlite:///./patient.db
+      - PATIENT_SERVICE_HOST=0.0.0.0
+      - PATIENT_SERVICE_PORT=8001
+    volumes:
+      - .:/app
+      - patient-db:/data
+
+volumes:
+  patient-db:
+
